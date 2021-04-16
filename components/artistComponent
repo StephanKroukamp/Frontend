@@ -1,0 +1,70 @@
+<v-container class="grey lighten-5">
+  <v-row>
+    <v-col
+      v-for="(artist, i) in artists" 
+      :key="i"
+      xs="6"
+      sm="6"
+      md="6"
+      lg="4"
+      xl="3"
+    >
+      <v-card
+        :color="randomizeColor()"
+        dark
+      >
+        <v-container>
+          <v-row>
+            <v-col
+              sm="7"
+            >
+            <v-tooltip right>
+              <template v-slot:activator="{ on, attrs }">
+                <v-card-title
+                      v-bind="attrs"
+                      v-on="on"
+                      class="text-h5 artist-name"
+                    >
+                      {{artist.name}}
+                    </v-card-title>
+                    
+              </template>
+              <div>{{artist.name}}</div>
+            </v-tooltip>
+
+            <v-card-subtitle 
+              v-for="(track, i) in artist.tracks"
+              :key="i"
+            >
+              {{track.name}}
+            </v-card-subtitle>
+
+            <v-card-actions>
+              <v-btn
+                class="ml-2 mt-3"
+                fab
+                icon
+                right
+                height="40px"
+                width="40px"
+              >
+                <v-icon>mdi-play</v-icon>
+              </v-btn>
+            </v-card-actions>
+            </v-col>
+
+            <v-col sm="5">
+              <v-avatar
+                class="ma-3"
+                size="125"
+                tile
+              >
+                <v-img :src="artist.coverArt"></v-img>
+              </v-avatar>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-card>
+    </v-col>
+  </v-row>
+</v-container>
